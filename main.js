@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartItemsList = document.querySelector(".cart-items");
     const cartTotal = document.querySelector(".cart-total span");
     const checkoutButton = document.querySelector(".checkout");
-    let idx = 0;
+    let idx = localStorage.length;
 
     function updateCartWithLocalStorage() {
         for(let i = 0; i < localStorage.length; i++) {
@@ -37,9 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
         cart.length = 0; 
         updateCart();
         localStorage.clear()
+        idx = 0
     });
 
     function updateCart() {
+        console.log(cart);
         cartItemsList.innerHTML = "";
         let total = 0;
         cart.forEach(item => {
